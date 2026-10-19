@@ -1,0 +1,45 @@
+STUDIO BARBEARIA KAGOMES — SITE
+
+ARQUIVOS
+- index.html: estrutura do site.
+- style.css: aparência visual responsiva (inclui celular).
+- script.js: serviços, preços, horários e integração com WhatsApp.
+
+COMO TESTAR NO COMPUTADOR
+1. Extraia o arquivo ZIP, se estiver usando o ZIP.
+2. Abra index.html em um navegador moderno.
+3. Teste o formulário: selecione serviço, data e horário e envie.
+4. O site abre o WhatsApp com uma mensagem pronta. A pessoa precisa tocar em Enviar no WhatsApp.
+
+CONFIGURAÇÕES EDITÁVEIS
+Abra script.js em um editor de texto e procure CONFIG no começo do arquivo:
+- whatsapp: use país + DDD + número, somente dígitos. Exemplo atual: 5511962243984.
+- openingTime: abertura, formato 24h, por exemplo "09:00".
+- closingTime: último horário oferecido, por exemplo "21:00".
+- intervalMinutes: intervalo entre opções, atualmente 30 minutos.
+- waitTimeMinutes: estimativa de espera na barbearia, atualmente 15 minutos. Altere para o tempo que deseja informar aos clientes.
+- services: nomes, preços em reais, duração em minutos (duration) e observações.
+Salve o arquivo após editar. O horário de 21:00 aparece como uma opção; se não quiser oferecer início de atendimento nesse horário, altere closingTime para "20:30".
+
+IMPORTANTE SOBRE AGENDAMENTO
+Este é um site estático e gratuito. Ele não consulta uma agenda real, não bloqueia horários já pedidos e não confirma automaticamente a reserva. O cliente escolhe data/horário e envia o pedido no WhatsApp; você confirma manualmente a disponibilidade na conversa. Não foi implementado pagamento antecipado.
+
+PUBLICAR GRATUITAMENTE COM GITHUB PAGES
+1. Crie uma conta gratuita em https://github.com/ (se ainda não tiver).
+2. Crie um repositório público com nome, por exemplo, studio-barbearia-kagomes.
+3. Envie index.html, style.css, script.js e LEIA-ME.txt para a raiz do repositório (botão Add file > Upload files).
+4. No repositório, entre em Settings > Pages.
+5. Em Build and deployment, escolha Deploy from a branch; selecione a branch main e a pasta /(root), depois Save.
+6. Aguarde alguns minutos. A página mostrará o endereço público do site, normalmente https://SEU-USUARIO.github.io/studio-barbearia-kagomes/
+7. Abra esse endereço no celular e teste todos os campos e links.
+
+ALTERNATIVA GRATUITA: NETLIFY DROP
+1. Acesse https://app.netlify.com/drop/ .
+2. Extraia a pasta e arraste a pasta do site para a área indicada, se o serviço estiver disponível para sua conta.
+3. O Netlify cria um endereço público temporário/aleatório; você pode ajustar o nome nas configurações do site, se disponível.
+
+DICAS
+- Para mudar serviços e preços, edite CONFIG.services em script.js.
+- Para mudar cores e estilo, edite as variáveis no começo de style.css.
+- O site usa fontes do Google Fonts; se estiver offline, fontes alternativas serão usadas.
+- Cada procedimento agora tem sua duração e o site só oferece horários de início que permitam terminar até as 21h. As opções começam a cada 30 minutos; a hora de término estimada aparece junto ao horário. O formulário ainda não verifica conflitos com outros pedidos. Para bloquear horários automaticamente, será necessário conectar uma agenda/serviço de reservas com disponibilidade compartilhada ou construir uma aplicação com backend.

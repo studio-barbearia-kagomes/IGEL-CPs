@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111315">
+  <meta name="description" content="Studio Barbearia KaGomes — serviços, valores e pedidos de agendamento pelo WhatsApp.">
+  <title>Studio Barbearia KaGomes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Studio Barbearia KaGomes, início">
+      <span class="brand-mark">KG</span>
+      <span class="brand-name">STUDIO <b>BARBEARIA</b><small>KA GOMES</small></span>
+    </a>
+    <a class="top-cta" href="#agendar">Agendar <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span></span> BARBEARIA • ESTILO • PRECISÃO</p>
+        <h1>SEU ESTILO.<br><em>SUA ASSINATURA.</em></h1>
+        <p class="hero-copy">Atendimento com personalidade, técnica e atenção aos detalhes.</p>
+        <a class="primary-btn" href="#agendar">ESCOLHER HORÁRIO <span>↗</span></a>
+        <div class="hero-meta"><span>✦ Atendimento com hora marcada</span><span>✦ Sem pagamento antecipado</span></div>
+      </div>
+      <div class="hero-stamp" aria-hidden="true"><span>KG</span><small>EST. BARBER<br>STUDIO</small></div>
+    </section>
+
+    <section class="section services" id="servicos">
+      <div class="section-head">
+        <p class="eyebrow">01 / MENU</p>
+        <h2>SERVIÇOS <span>& VALORES</span></h2>
+        <p class="muted">Escolha o cuidado ideal para você.</p>
+      </div>
+      <div id="service-list" class="service-list"></div>
+      <p class="service-note">* Definitiva, Botox, Luzes Platinada e Platinado/Global não incluem corte.</p>
+    </section>
+
+    <section class="booking section" id="agendar">
+      <div class="section-head">
+        <p class="eyebrow">02 / RESERVA</p>
+        <h2>VAMOS MARCAR<span>?</span></h2>
+        <p class="muted">Escolha o serviço, a data e um horário. Seu pedido será enviado pelo WhatsApp para confirmação.</p>
+      </div>
+      <form id="booking-form" class="booking-card">
+        <label for="customer-name">Seu nome</label>
+        <input id="customer-name" name="name" autocomplete="name" placeholder="Como podemos te chamar?" required>
+
+        <label for="service">Serviço desejado</label>
+        <select id="service" name="service" required>
+          <option value="">Selecione um serviço</option>
+        </select>
+
+        <div class="form-row">
+          <div>
+            <label for="date">Data desejada</label>
+            <input id="date" name="date" type="date" required>
+          </div>
+          <div>
+            <label for="time">Horário</label>
+            <select id="time" name="time" required>
+              <option value="">Escolha a data primeiro</option>
+            </select>
+          </div>
+        </div>
+        <label for="notes">Observações <span class="optional">(opcional)</span></label>
+        <textarea id="notes" name="notes" rows="3" placeholder="Ex.: preferência de estilo, dúvida, etc."></textarea>
+
+        <div class="booking-summary">
+          <span>VALOR DO SERVIÇO</span>
+          <strong id="selected-price">—</strong>
+        </div>
+        <button class="primary-btn submit-btn" type="submit">PEDIR AGENDAMENTO NO WHATSAPP <span>↗</span></button>
+        <p class="form-foot">O horário só fica confirmado após a resposta da barbearia. Nenhum pagamento antecipado é solicitado por este site.</p>
+        <div class="policy-notices">
+          <p><strong>⏱ Tempo de espera:</strong> estimativa de <span id="wait-time-display">15</span> minutos. Pode variar conforme o movimento e os atendimentos do dia.</p>
+          <p><strong>Cancelamentos:</strong> só podem ser solicitados com pelo menos 24 horas de antecedência do horário agendado.</p>
+          <p><strong>Aviso de dezembro:</strong> os valores dos serviços poderão sofrer alterações durante o mês de dezembro. Confirme o valor atualizado com a barbearia ao solicitar o agendamento.</p>
+        </div>
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="contact-strip">
+      <div><p class="eyebrow">03 / CONTATO</p><h2>FALA COM A GENTE.</h2><p>Tem dúvidas? Chame direto no WhatsApp.</p></div>
+      <a id="direct-whatsapp" class="outline-btn" href="https://wa.me/5511962243984" target="_blank" rel="noopener">ABRIR WHATSAPP <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand footer-brand" href="#inicio"><span class="brand-mark">KG</span><span class="brand-name">STUDIO <b>BARBEARIA</b><small>KA GOMES</small></span></a>
+    <p>© <span id="year"></span> Studio Barbearia KaGomes</p>
+    <a href="#inicio">VOLTAR AO TOPO ↑</a>
+  </footer>
+  <a id="floating-whatsapp" class="floating-whatsapp" href="https://wa.me/5511962243984" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">W</a>
+  <script src="script.js"></script>
+</body>
+</html>
