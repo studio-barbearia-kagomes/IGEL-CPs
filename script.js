@@ -23,10 +23,12 @@ const CONFIG = {
     { name: "Definitiva", price: 130, duration: 120, note: "Corte não incluso" },
     { name: "Botox", price: 100, duration: 90, note: "Corte não incluso" },
     { name: "Luzes Platinada", price: 120, duration: 180, note: "Corte não incluso" },
-    { name: "Platinado/Global", price: 150, duration: 240, note: "Corte não incluso" },
-{ name: "Mensalista", price: 0, duration: 50 },
-{ name: "Renovação Mensalista", price: 200, duration: 50 }
+     { name: "Platinado/Global", price: 150, duration: 240, note: "Corte não incluso" },
+    { name: "Mensalista", price: 0, duration: 50 },
+    { name: "Renovação Mensalista", price: 200, duration: 50 }
+  ]
 };
+
 
 const $ = (selector) => document.querySelector(selector);
 const money = (value) => value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
