@@ -23,8 +23,9 @@ const CONFIG = {
     { name: "Definitiva", price: 130, duration: 120, note: "Corte não incluso" },
     { name: "Botox", price: 100, duration: 90, note: "Corte não incluso" },
     { name: "Luzes Platinada", price: 120, duration: 180, note: "Corte não incluso" },
-    { name: "Platinado/Global", price: 150, duration: 240, note: "Corte não incluso" }
-  ]
+    { name: "Platinado/Global", price: 150, duration: 240, note: "Corte não incluso" },
+{ name: "Mensalista", price: 0, duration: 50 },
+{ name: "Renovação Mensalista", price: 200, duration: 50 }
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -35,6 +36,58 @@ const dateInput = $("#date");
 const timeSelect = $("#time");
 const priceDisplay = $("#selected-price");
 const formMessage = $("#form-message");
+
+async function loadPublicServices() {
+  try {
+    const response = await fetch(
+      "https://vbuwroxufbcisrzzftjm.supabase.co/rest/v1/services?select=id,name,price_cents,duration_minutes,is_active,display_order&is_active=eq.true&order=display_order.asc,name.asc",
+      {
+        headers: {
+          apikey: "sb_publishable_14T2-_L2CtWMKCi5Noiw2g_GqQcV4mH",
+          Authorization: "Bearer sb_publishable_14T2-_L2CtWMKCi5Noiw2g_GqQcV4mH"
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Erro ao consultar serviços: HTTP " + response.status);
+    }
+
+    const rows = await response.json();
+
+    if (!Array.isArray(rows) || rows.length === 0) {
+      throw new Error("Nenhum serviço ativo retornado pelo Supabase.");
+    }
+
+    CONFIG.services = rows.map(service => ({
+      name: service.name,
+      price: Number(service.price_cents || 0) / 100,
+      duration: Number(service.duration_minutes || 30)
+    }));
+
+    serviceList.replaceChildren();
+    serviceSelect.replaceChildren();
+
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "Selecione um serviço";
+    serviceSelect.appendChild(placeholder);
+
+    renderServices();
+    updatePrice();
+
+  } catch (error) {
+    console.error("Falha ao carregar serviços do Supabase:", error);
+
+    formMessage.textContent =
+      "Não foi possível atualizar os serviços. Os serviços cadastrados anteriormente continuam disponíveis.";
+
+   loadPublicServices();
+setupDateLimits();
+fillTimes();
+updatePrice();
+  }
+}
 
 function renderServices() {
   CONFIG.services.forEach((service, index) => {
